@@ -71,4 +71,22 @@ function PrintLogonBox()
   }
 }
 
+/* authGet()
+ * 
+ * Request the user name/password
+ * 
+ * Returns: Nothing
+ */
+function authGet()
+{
+  global $PHP_SELF, $QUERY_STRING;
+
+  print_header(0, 0, 0, 0, "");
+
+  echo "<p>".get_vocab("norights")."</p>\n";
+  echo '<p><a href="/user">'.get_vocab("please_login")."</a></p>\n";
+
+  exit();
+}
+
 ?>
