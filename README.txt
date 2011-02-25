@@ -1,4 +1,3 @@
-// $Id$
 
 Drupal - MRBS integration
 

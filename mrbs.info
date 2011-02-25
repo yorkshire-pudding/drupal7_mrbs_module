@@ -1,4 +1,3 @@
-; $Id$
 name = MRBS
 description = Creates permissions for MRBS integration
 core = 6.x

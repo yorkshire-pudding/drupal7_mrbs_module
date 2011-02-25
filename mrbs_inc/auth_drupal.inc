@@ -1,6 +1,5 @@
 <?php
 
-/* $Id$
  *
  * Authentication scheme that uses Drupal session to authenticate user
  *
