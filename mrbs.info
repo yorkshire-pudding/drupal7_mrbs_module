@@ -1,3 +1,9 @@
+; $Id$
 name = MRBS
-description = Creates permissions for MRBS integration
-core = 6.x
+description = Creates permissions for MRBS 1.4.8 integration and MRBS inc files for SSO
+package = MRBS
+dependencies[] = user
+core = 7.x
+files[] = mrbs.install
+files[] = mrbs.module
+

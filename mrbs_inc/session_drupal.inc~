@@ -229,7 +229,7 @@ function PrintLogonBox()
   {
     //check if this user have Drupal7 permisions to view or edit MRBS. If not disable username vars to avoid connect with not desired user
     if (authGetUserLevel($user) == -1){
-      ?> Acces Denegat. <br> <a href="../..">Come back to Drupal</a>
+      ?> Acces Denegat. <br> <a href="../..">Tornar a l'academia</a>
       <?php
      $user="";
      $_SESSION["UserName"]="";
@@ -247,7 +247,7 @@ function PrintLogonBox()
                 <a href="<?php echo "$search_string\" title=\""
          . get_vocab('show_my_entries') . "\">" . get_vocab('you_are')." "
          . htmlspecialchars($user) ?></a>
-                <a href="../..">Come back to Drupal</a>
+                <a href="../..">Tornar al l'academia</a>
                 <form method="post" action="admin.php">
                   <div>
                     <input type="hidden" name="TargetURL" value="<?php echo htmlspecialchars($TargetURL) ?>">
@@ -266,12 +266,12 @@ function PrintLogonBox()
 	$user = $_GET['user'];
 	}
 	if (authGetUserLevel($user) == -1){
-	  ?> Acces Denegat. <br> <a href="../..">Come back to Drupal</a>
+	  ?> Acces Denegat. <br> <a href="../..">Tornar a l'academia</a>
           <?php
 	  exit;
         }
         else{
-        ?> <a href="../..">Come back to Drupal</a>
+        ?> <a href="../..">Tornar al web de l'academia</a>
         <?php
         }
   } 

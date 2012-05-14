@@ -1,0 +1,58 @@
+<?php
+
+/* $Id: auth_drupal.inc,v 1.1 2009/02/14 16:18:32 wesku Exp $
+ *
+ * Authentication scheme that uses Drupal session to authenticate user
+ *
+ */
+
+$current_directory = getcwd();
+$path = $_SERVER['DOCUMENT_ROOT'];
+chdir($path."/academia");
+define('DRUPAL_ROOT', getcwd()); //the most important line
+require_once './includes/bootstrap.inc';
+// We need to do full bootstrap to get access to user permissions
+drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
+
+// Is it safe to remove the version check?
+function version_check($vercheck)
+{
+  $minver = str_replace(".","", $vercheck);
+  $curver = str_replace(".","", phpversion());
+
+  if($curver >= $minver)
+  {
+    return true;
+  }
+  return false;
+}
+
+if (version_check("4.0.3") == false)
+{
+  include "escapeshellarg.inc";
+}
+
+
+/* authGetUserLevel($user)
+ * 
+ * Determines the users access level
+ * 
+ * $user - The user name
+ *
+ * Returns:
+ *   The users access level
+ */
+//get the user acces from the drupal roles and give it to mrbs user roles
+
+function authGetUserLevel($user)
+{
+  if (user_access('mrbs admin')) {
+	return 2;
+  } elseif (user_access('mrbs bookings')) {
+	return 1;
+  } else {
+	return 0;
+  }
+}
+
+?>

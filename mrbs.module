@@ -2,15 +2,6 @@
 
 /**
  * @file
- * MRBS module, implements just hook_perm
+ * This file is required for all modules
  */
 
-/**
- * Implementation of hook_perm().
- */
-function mrbs_perm() {
-  $perms[] = 'view mrbs';
-  $perms[] = 'make mrbs bookings';
-  $perms[] = 'administer mrbs';
-  return $perms;
-}
