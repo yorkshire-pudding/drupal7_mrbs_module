@@ -155,6 +155,15 @@ function printLoginForm($TargetURL)
 </form>
 <?php
   echo "</div>";  // Close of the contents div
+//modificat
+?>
+ <script language="JavaScript">
+ var drupal_user_name = ["<?php echo $_GET["user"]; ?>"];
+ document.getElementById('NewUserName').readOnly = true;
+ document.getElementById('NewUserName').value = drupal_user_name;
+ </script>
+<?php
+
   // Print footer and exit
   print_footer(TRUE);
 }
@@ -213,6 +222,7 @@ function getUserName()
 // Print the logon entry on the top banner.
 function PrintLogonBox()
 {
+
   global $PHP_SELF, $QUERY_STRING, $user_list_link, $day, $month, $year;
 
   $TargetURL = basename($PHP_SELF);
@@ -229,7 +239,7 @@ function PrintLogonBox()
   {
     //check if this user have Drupal7 permisions to view or edit MRBS. If not disable username vars to avoid connect with not desired user
     if (authGetUserLevel($user) == -1){
-      ?> Acces Denegat. <br> <a href="../..">Come back to Drupal</a>
+      ?> Acces Denegat. <br> <a href="../..">Tornar a l'academia</a>
       <?php
      $user="";
      $_SESSION["UserName"]="";
@@ -247,8 +257,7 @@ function PrintLogonBox()
                 <a href="<?php echo "$search_string\" title=\""
          . get_vocab('show_my_entries') . "\">" . get_vocab('you_are')." "
          . htmlspecialchars($user) ?></a>
-                <a href="../..">Come back to Drupal</a>
-                <form method="post" action="admin.php">
+               <form method="post" action="admin.php">
                   <div>
                     <input type="hidden" name="TargetURL" value="<?php echo htmlspecialchars($TargetURL) ?>">
                     <input type="hidden" name="Action" value="SetName">
@@ -266,12 +275,12 @@ function PrintLogonBox()
 	$user = $_GET['user'];
 	}
 	if (authGetUserLevel($user) == -1){
-	  ?> Acces Denegat. <br> <a href="../..">Come back to Drupal</a>
+	  ?> Estas Desconnectat del Gestor de Reserves. <br><br> Si vols Accedir al gestor de Reserves ho has de fer a traves de l'enllaç que trobaras <br> al teu Menu del Web de l'academia i tornant a introduir usuari i contrasenya al gestor de reserves<br><br><a href="../..">CLICA AQUÍ PER TORNAR AL WEB DE L'ACADEMIA</a>
           <?php
 	  exit;
         }
         else{
-        ?> <a href="../..">Come back to Drupal</a>
+        ?> <a href="../..">TORNAR AL WEB DE L'ACADEMIA</a>
         <?php
         }
   } 
@@ -280,5 +289,4 @@ function PrintLogonBox()
     print "<a href=\"$user_list_link\">" . get_vocab('user_list') . "</a>\n";
   }
 }
-
 ?>
