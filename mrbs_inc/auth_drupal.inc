@@ -1,15 +1,12 @@
 <?php
 /*****************************************************************************
 *
-*   File name       auth_db_ext.inc
+*   File name       auth_drupal.inc
 *
-*   Description     Authenticate users from a table in another database.
+*   Description     Authenticate users from Drupal7.
 *
 *   Notes           To use this authentication scheme, set in config.inc.php:
-*         $auth["type"]  = "db_ext";
-*                   Assumes passwords are stored in the other table in
-*                   plaintext, authValidateUser() will need to be changed if
-*                   the password is stored differently.
+*         $auth["type"]  = "drupal";
 *
 *   History
 *    Available in the source control system
