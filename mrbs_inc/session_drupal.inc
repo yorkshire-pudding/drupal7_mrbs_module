@@ -8,9 +8,6 @@
 *   Notes          To use this session mechanism, set in config.inc.php:     *
 *                  $auth["session"]  = "drupal";                             *
 *                                                                            *
-*   History                                                                  *
-*                  2009/02/14 Vesa Palmu Created this file                   *
-*                  Remaining history in ChangeLog and CVS logs               *
 *                                                                            *
 \*****************************************************************************/
 
@@ -275,7 +272,7 @@ function PrintLogonBox()
 	$user = $_GET['user'];
 	}
 	if (authGetUserLevel($user) == -1){
-	  ?> You are disconnected from MRBS. <br><br> To Get acces to MRBS You Have to came from MRBS Link in Drupal site <br> See Readme.txt in MRBS Module to know how get better MRBS - Drupal Integration<br><br><a href="../..">CLICK HERE TO COME BACK TO DRUPAL</a>
+	  ?> You are disconnected from MRBS. <br><br> To Get acces to MRBS You Have to came from MRBS Link in Drupal site <br><br><a href="../..">CLICK HERE TO COME BACK TO DRUPAL</a>
           <?php
 	  exit;
         }

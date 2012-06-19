@@ -31,3 +31,5 @@ OPTIONAL
 The user log in MRBS is still needed.
 With this the session is still managed by MRBS php schema, but with more secure and better drupal integration
 
+IF YOU DON'T MAKE THE OPTIONAL CHANGES YOU HAVE TO CHANGE THE FUNCTION PrintLogonBox IN session_php.inc FILE TO CREATE A LINK TO COME BACK TO DRUPAL SITE, OR ADD THE LINK IN SOME PART OF MRBS.
+

@@ -4,6 +4,5 @@ description = Creates permissions for MRBS 1.4.8 integration and MRBS inc files 
 package = MRBS
 dependencies[] = user
 core = 7.x
-files[] = mrbs.install
 files[] = mrbs.module
 

@@ -2,6 +2,24 @@
 
 /**
  * @file
- * This file is required for all modules
  */
+/**
+ * Implements hook_permission().
+ */
+function mrbs_permission() {
+  return array(
+    'mrbs view' => array(
+      'title' => t('View in MRBS'),
+      'description' => t('Acces to MRBS with view permision.'),
+    ),
+    'mrbs bookings' => array(
+      'title' => t('Booking in MRBS'),
+      'description' => t('Acces to MRBS with Booking permisions.'),
+    ),
+    'mrbs admin' => array(
+      'title' => t('View MRBS'),
+      'description' => t('Acces to MRBS with Admin permisions.'),
+    ),
+  );
+}
 

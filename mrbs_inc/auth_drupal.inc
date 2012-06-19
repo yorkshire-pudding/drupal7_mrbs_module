@@ -88,26 +88,23 @@ function authGetUserLevel($user)
                       $auth['drupal']['db_name']);
   $user = addslashes($user);
   //we use default D7 table names here to take rid of every mrbs role
-  $query = "SELECT rid FROM role WHERE name = 'mrbs admin'";
+  $query = "SELECT rid FROM role_permission WHERE permission = 'mrbs admin' AND module = 'mrbs'";
   $r = sql_query($query, $conn);
-  if ($r && (sql_count($r, $conn) == 1)) // force a unique match
+  for ($i = 0; ($row = sql_row($r, $i, $conn)); $i++)
   {
-    $row = sql_row($r, 0, $conn);
-    $mrbs_admin_rid = $row[0];     
+    $mrbs_admin_rid[] = $row[0];
   }
-  $query_2 = "SELECT rid FROM role WHERE name = 'mrbs bookings'";
+  $query_2 = "SELECT rid FROM role_permission WHERE permission = 'mrbs bookings' AND module = 'mrbs'";
   $r_2 = sql_query($query_2, $conn);
-  if ($r_2 && (sql_count($r_2, $conn) == 1)) // force a unique match
+  for ($i = 0; ($row_2 = sql_row($r_2, $i, $conn)); $i++)
   {
-    $row_2 = sql_row($r_2, 0, $conn);
-    $mrbs_bookings_rid = $row_2[0];
+    $mrbs_bookings_rid[] = $row_2[0];
   }
-  $query_3 = "SELECT rid FROM role WHERE name = 'mrbs view'";
+  $query_3 = "SELECT rid FROM role_permission WHERE permission = 'mrbs view' AND module = 'mrbs'";
   $r_3 = sql_query($query_3, $conn);
-  if ($r_3 && (sql_count($r_3, $conn) == 1)) // force a unique match
+  for ($i = 0; ($row_3 = sql_row($r_3, $i, $conn)); $i++)
   {
-    $row_3 = sql_row($r_3, 0, $conn);
-    $mrbs_view_rid = $row_3[0];    
+    $mrbs_view_rid[] = $row_3[0];
   }
   //we use default D7 table names here to take uid of the user
   $query_4 = "SELECT uid FROM users WHERE name = '$user'";
@@ -122,22 +119,26 @@ function authGetUserLevel($user)
   {
     $rid_array[] = $row_5[0];
   }
-  //we compare the rid of the user to check if have mrbs roles
-  if(in_array($mrbs_admin_rid, array_values($rid_array))){
-  //admin permisions
-  return 2;
+
+  $is_mrbs_admin = array_intersect ($mrbs_admin_rid, $rid_array);
+  $is_mrbs_bookings = array_intersect ($mrbs_bookings_rid, $rid_array);
+  $is_mrbs_view = array_intersect ($mrbs_view_rid, $rid_array);
+
+  if(!empty ($is_mrbs_admin)){
+	//admin permisions
+	return 2;
   }
-  elseif(in_array($mrbs_bookings_rid, array_values($rid_array))){
-  //booking permisions
-  return 1;
+  elseif(!empty ($is_mrbs_bookings)){
+	//bookings permisions
+	return 1;
   }
-  elseif(in_array($mrbs_view_rid, array_values($rid_array))){
-  //view permisions
-  return 0;
+  elseif(!empty ($is_mrbs_view)){
+	//view permisions
+	return 0;
   }
-  else{
-  //can't access to MRBS
-  return -1;
+  else {
+    // no permissions 
+    return -1;
   }
 }
 
