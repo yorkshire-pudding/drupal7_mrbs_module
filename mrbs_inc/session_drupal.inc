@@ -239,7 +239,7 @@ function PrintLogonBox()
   {
     //check if this user have Drupal7 permisions to view or edit MRBS. If not disable username vars to avoid connect with not desired user
     if (authGetUserLevel($user) == -1){
-      ?> Acces Denegat. <br> <a href="../..">Tornar a l'academia</a>
+      ?> Acces Denied. <br> <a href="../..">Come Back to Drupal</a>
       <?php
      $user="";
      $_SESSION["UserName"]="";
@@ -275,12 +275,12 @@ function PrintLogonBox()
 	$user = $_GET['user'];
 	}
 	if (authGetUserLevel($user) == -1){
-	  ?> Estas Desconnectat del Gestor de Reserves. <br><br> Si vols Accedir al gestor de Reserves ho has de fer a traves de l'enllaç que trobaras <br> al teu Menu del Web de l'academia i tornant a introduir usuari i contrasenya al gestor de reserves<br><br><a href="../..">CLICA AQUÍ PER TORNAR AL WEB DE L'ACADEMIA</a>
+	  ?> You are disconnected from MRBS. <br><br> To Get acces to MRBS You Have to came from MRBS Link in Drupal site <br> See Readme.txt in MRBS Module to know how get better MRBS - Drupal Integration<br><br><a href="../..">CLICK HERE TO COME BACK TO DRUPAL</a>
           <?php
 	  exit;
         }
         else{
-        ?> <a href="../..">TORNAR AL WEB DE L'ACADEMIA</a>
+        ?> <a href="../..">COME BACK TO DRUPAL</a>
         <?php
         }
   } 
