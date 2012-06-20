@@ -9,15 +9,15 @@
 function mrbs_permission() {
   return array(
     'mrbs view' => array(
-      'title' => t('View in MRBS'),
+      'title' => t('MRBS View Permission'),
       'description' => t('Acces to MRBS with view permision.'),
     ),
     'mrbs bookings' => array(
-      'title' => t('Booking in MRBS'),
+      'title' => t('MRBS Booking permission'),
       'description' => t('Acces to MRBS with Booking permisions.'),
     ),
     'mrbs admin' => array(
-      'title' => t('View MRBS'),
+      'title' => t('MRBS Admin permission'),
       'description' => t('Acces to MRBS with Admin permisions.'),
     ),
   );
