@@ -1,5 +1,10 @@
+# WARNING
+This is the old module that is insecure.  It is here for reference only
+
 
 Drupal - MRBS integration
+
+
 
 This very simple module offers single sign-on integration with MRBS ( http://mrbs.sourceforge.net/ ) and Drupal. The module uses Drupal user accounts, permissions and sessions with MRBS. Currently the module has only been tested when installed directly in a subdirectory on Drupal root directory, but it should be quite easy to modify it for other installations.
 
